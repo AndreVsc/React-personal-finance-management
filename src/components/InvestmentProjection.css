@@ -1,0 +1,37 @@
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 8px;
+    color: #007bff;
+}
+
+.label {
+    font-weight: normal;
+    color: #555;
+}
+
+.value {
+    font-weight: bold;
+}
+
+.projection-box {
+    margin-top: 15px;
+    background: #e3f2fd;
+    padding: 10px;
+    border-radius: 4px;
+    color: #007bff;
+}
+
+.projection-label {
+    font-size: 14px;
+}
+
+.projection-value {
+    font-size: 16px;
+    font-weight: bold;
+}

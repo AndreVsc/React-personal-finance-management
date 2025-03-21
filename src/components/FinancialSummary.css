@@ -1,0 +1,60 @@
+.summary-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.summary-card {
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.summary-balance {
+    background: #e3f2fd;
+}
+
+.summary-balance-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.summary-balance-status {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #2e7d32;
+}
+
+.summary-icon {
+    margin-right: 5px;
+}
+
+.summary-savings {
+    background: #f0faeb;
+}
+
+.summary-savings-progress {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.summary-savings-remaining {
+    font-size: 14px;
+    color: #555;
+}
+
+.summary-investments {
+    background: #f9f2fc;
+}
+
+.summary-investment-amount {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.summary-investment-return {
+    font-size: 14px;
+    color: #555;
+}

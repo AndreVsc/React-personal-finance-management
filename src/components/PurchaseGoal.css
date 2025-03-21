@@ -1,0 +1,36 @@
+.goal-title {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.goal-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.label {
+    font-weight: normal;
+    color: #555;
+}
+
+.goal-value {
+    font-weight: bold;
+}
+
+.goal-alert {
+    margin-top: 15px;
+    background: #fdecea;
+    padding: 10px;
+    border-radius: 4px;
+    color: #d32f2f;
+    display: flex;
+    align-items: center;
+}
+
+.goal-icon-alert {
+    margin-right: 8px;
+}

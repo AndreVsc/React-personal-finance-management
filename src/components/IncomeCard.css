@@ -1,0 +1,50 @@
+.income-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.income-icon {
+    color: #22C55E;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.income-label {
+    color: #333;
+    font-weight: 600;
+}
+
+.income-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.income-value {
+    color: #16A34A;
+    font-weight: 700;
+    font-size: 22px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.income-input {
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: right;
+}
+
+.edit {
+    background: #eee;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit:hover {
+    background: #ddd;
+}
