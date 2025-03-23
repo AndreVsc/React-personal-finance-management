@@ -1,27 +1,27 @@
-.goal-title {
+.purchase-goal-title {
     font-size: 18px;
     font-weight: bold;
     display: flex;
     align-items: center;
 }
 
-.goal-details p {
+.purchase-goal-details p {
     margin: 5px 0;
     font-size: 14px;
     display: flex;
     justify-content: space-between;
 }
 
-.label {
+.purchase-goal-label {
     font-weight: normal;
     color: #555;
 }
 
-.goal-value {
+.purchase-goal-value {
     font-weight: bold;
 }
 
-.goal-alert {
+.purchase-goal-alert {
     margin-top: 15px;
     background: #fdecea;
     padding: 10px;
@@ -31,6 +31,6 @@
     align-items: center;
 }
 
-.goal-icon-alert {
+.purchase-goal-icon-alert {
     margin-right: 8px;
 }

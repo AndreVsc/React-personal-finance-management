@@ -1,47 +1,47 @@
-  .table-title {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 10px;
-  }
+.expense-table-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 
-  .expense-table {
-      width: 100%;
-      border-collapse: collapse;
-  }
+.expense-table {
+    width: 100%;
+    border-collapse: collapse;
+}
 
-  .expense-table th,
-  .expense-table td {
-      padding: 14px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-  }
+.expense-table th,
+.expense-table td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 
-  .expense-table th {
-      background: #ffffff;
-  }
+.expense-table th {
+    background: #ffffff;
+}
 
-  .dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      margin-right: 8px;
-  }
+.expense-table-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
 
-  .ok-status {
-      color: #22C55E;
-  }
+.expense-table-ok-status {
+    color: #22C55E;
+}
 
-  .over-budget {
-      color: #EF4444;
-      font-weight: 400;
-  }
+.expense-table-over-budget {
+    color: #EF4444;
+    font-weight: 400;
+}
 
-  .balance {
-      font-weight: bold;
-      text-align: right;
-  }
+.expense-table-balance {
+    font-weight: bold;
+    text-align: right;
+}
 
-  .balance-amount {
-      color: #22C55E;
-  }
+.expense-table-balance-amount {
+    color: #22C55E;
+}

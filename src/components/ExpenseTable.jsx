@@ -1,21 +1,40 @@
 import { useState } from "react";
+import { useFinance } from "../context/FinanceContext";
 import "./ExpenseTable.css";
 
-const categories = [
-    { name: "Necessidades", allocation: 50, max: 2500, spent: 2300, color: "#3498db" },
-    { name: "Lazer", allocation: 30, max: 1500, spent: 1700, color: "#2ecc71" },
-    { name: "Investimentos", allocation: 15, max: 750, spent: 600, color: "#9b59b6" },
-    { name: "Emergências", allocation: 5, max: 250, spent: 200, color: "#f1c40f" }
-];
-
 export default function ExpenseTable() {
-    const totalMax = categories.reduce((sum, cat) => sum + cat.max, 0);
+    const { categories, updateCategory, updateSpent, income } = useFinance();
+    const [editingIndex, setEditingIndex] = useState(null);
+    const [editingField, setEditingField] = useState(null);
+    const [tempValue, setTempValue] = useState("");
+
     const totalSpent = categories.reduce((sum, cat) => sum + cat.spent, 0);
-    const balance = totalMax - totalSpent;
+    const balance = income - totalSpent;
+
+    const handleEdit = (index, field, value) => {
+        setEditingIndex(index);
+        setEditingField(field);
+        setTempValue(value.toString());
+    };
+
+    const handleSave = () => {
+        if (editingIndex !== null && editingField) {
+            const value = Number(tempValue);
+            if (!isNaN(value) && value >= 0) {
+                if (editingField === 'allocation') {
+                    updateCategory(editingIndex, { allocation: value, max: (income * value) / 100 });
+                } else if (editingField === 'spent') {
+                    updateSpent(editingIndex, value);
+                }
+            }
+        }
+        setEditingIndex(null);
+        setEditingField(null);
+    };
 
     return (
         <>
-            <h3 className="table-title">📌 Categorias de Gastos</h3>
+            <h3 className="expense-table-title">📌 Categorias de Gastos</h3>
             <table className="expense-table">
                 <thead>
                     <tr>
@@ -27,15 +46,62 @@ export default function ExpenseTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    {categories.map((cat) => {
-                        const status = cat.spent > cat.max ? `⚠️ +${Math.round(((cat.spent - cat.max) / cat.max) * 100)}%` : "OK";
-                        const statusClass = cat.spent > cat.max ? "over-budget" : "ok-status";
+                    {categories.map((cat, index) => {
+                        const status = cat.spent > cat.max 
+                            ? `⚠️ +${Math.round(((cat.spent - cat.max) / cat.max) * 100)}%` 
+                            : "OK";
+                        const statusClass = cat.spent > cat.max 
+                            ? "expense-table-over-budget" 
+                            : "expense-table-ok-status";
+
                         return (
                             <tr key={cat.name}>
-                                <td><span className="dot" style={{ background: cat.color }}></span>{cat.name}</td>
-                                <td>{cat.allocation}%</td>
+                                <td>
+                                    <span 
+                                        className="expense-table-dot" 
+                                        style={{ background: cat.color }}
+                                    ></span>
+                                    {cat.name}
+                                </td>
+                                <td>
+                                    {editingIndex === index && editingField === 'allocation' ? (
+                                        <input
+                                            type="number"
+                                            value={tempValue}
+                                            onChange={(e) => setTempValue(e.target.value)}
+                                            onBlur={handleSave}
+                                            autoFocus
+                                            className="expense-table-input"
+                                        />
+                                    ) : (
+                                        <span 
+                                            onClick={() => handleEdit(index, 'allocation', cat.allocation)}
+                                            className="expense-table-editable"
+                                        >
+                                            {cat.allocation}%
+                                        </span>
+                                    )}
+                                </td>
                                 <td>R$ {cat.max.toLocaleString("pt-BR")}</td>
-                                <td>{cat.spent}</td>
+                                <td>
+                                    {editingIndex === index && editingField === 'spent' ? (
+                                        <input
+                                            type="number"
+                                            value={tempValue}
+                                            onChange={(e) => setTempValue(e.target.value)}
+                                            onBlur={handleSave}
+                                            autoFocus
+                                            className="expense-table-input"
+                                        />
+                                    ) : (
+                                        <span 
+                                            onClick={() => handleEdit(index, 'spent', cat.spent)}
+                                            className="expense-table-editable"
+                                        >
+                                            R$ {cat.spent.toLocaleString("pt-BR")}
+                                        </span>
+                                    )}
+                                </td>
                                 <td className={statusClass}>{status}</td>
                             </tr>
                         );
@@ -45,9 +111,13 @@ export default function ExpenseTable() {
                     <tr>
                         <td><strong>Total</strong></td>
                         <td>100%</td>
-                        <td>R$ {totalMax.toLocaleString("pt-BR")}</td>
+                        <td>R$ {income.toLocaleString("pt-BR")}</td>
                         <td>R$ {totalSpent.toLocaleString("pt-BR")}</td>
-                        <td className="balance"><span className="balance-amount">R$ {balance.toLocaleString("pt-BR")}</span></td>
+                        <td className="expense-table-balance">
+                            <span className={`expense-table-balance-amount ${balance < 0 ? 'expense-table-negative' : ''}`}>
+                                R$ {balance.toLocaleString("pt-BR")}
+                            </span>
+                        </td>
                     </tr>
                 </tfoot>
             </table>

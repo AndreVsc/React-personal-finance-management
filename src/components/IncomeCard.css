@@ -1,28 +1,28 @@
-.income-left {
+.income-card-left {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.income-icon {
+.income-card-icon {
     color: #22C55E;
     align-items: center;
     font-size: 22px;
     font-weight: 400;
 }
 
-.income-label {
+.income-card-label {
     color: #333;
     font-weight: 600;
 }
 
-.income-right {
+.income-card-right {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.income-value {
+.income-card-value {
     color: #16A34A;
     font-weight: 700;
     font-size: 22px;
@@ -30,14 +30,14 @@
     align-items: center;
 }
 
-.income-input {
+.income-card-input {
     padding: 3px;
     border: 1px solid #ccc;
     border-radius: 4px;
     text-align: right;
 }
 
-.edit {
+.income-card-edit {
     background: #eee;
     border: none;
     padding: 5px 10px;
@@ -45,6 +45,6 @@
     cursor: pointer;
 }
 
-.edit:hover {
+.income-card-edit:hover {
     background: #ddd;
 }

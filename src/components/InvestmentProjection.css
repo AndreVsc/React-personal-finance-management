@@ -1,25 +1,25 @@
-.title {
+.investment-projection-title {
     font-size: 18px;
     font-weight: bold;
     display: flex;
     align-items: center;
 }
 
-.icon {
+.investment-projection-icon {
     margin-right: 8px;
     color: #007bff;
 }
 
-.label {
+.investment-projection-label {
     font-weight: normal;
     color: #555;
 }
 
-.value {
+.investment-projection-value {
     font-weight: bold;
 }
 
-.projection-box {
+.investment-projection-box {
     margin-top: 15px;
     background: #e3f2fd;
     padding: 10px;
@@ -27,11 +27,18 @@
     color: #007bff;
 }
 
-.projection-label {
+.investment-projection-box-label {
     font-size: 14px;
 }
 
-.projection-value {
+.investment-projection-box-value {
     font-size: 16px;
     font-weight: bold;
+}
+
+.investment-projection-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
 }
