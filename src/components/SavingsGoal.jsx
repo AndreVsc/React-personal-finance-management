@@ -8,7 +8,7 @@ export default function SavingsGoal() {
   const [tempValue, setTempValue] = useState("");
 
   const { totalGoal, months, savedAmount } = savingsGoal;
-  const monthlySaving = totalGoal / months;
+  const monthlySaving = (totalGoal - savedAmount) / months;
   const progress = (savedAmount / totalGoal) * 100;
 
   const handleEdit = (field, value) => {
@@ -78,17 +78,6 @@ export default function SavingsGoal() {
       </div>
       <div className="savings-goal-details">
         <p>
-          <span className="savings-goal-label">Economia Necessária/Mês:</span>{" "}
-          <span className="savings-goal-value">
-            R$ {monthlySaving.toLocaleString("pt-BR", {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2
-            })}
-          </span>
-        </p>
-      </div>
-      <div className="savings-goal-details">
-        <p>
           <span className="savings-goal-label">Economizado até o momento:</span>{" "}
           {editing === 'savedAmount' ? (
             <input
@@ -107,6 +96,17 @@ export default function SavingsGoal() {
               R$ {savedAmount.toLocaleString("pt-BR")}
             </span>
           )}
+        </p>
+      </div>
+      <div className="savings-goal-details">
+        <p>
+          <span className="savings-goal-label">Economia Necessária/Mês:</span>{" "}
+          <span className="savings-goal-value">
+            R$ {monthlySaving.toLocaleString("pt-BR", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2
+            })}
+          </span>
         </p>
         <p>
           <span className="savings-goal-label">Progresso:</span>

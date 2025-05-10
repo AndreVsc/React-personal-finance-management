@@ -4,9 +4,13 @@ import "./PurchaseGoal.css";
 import { AlertCircle } from "lucide-react";
 
 const PurchaseGoal = () => {
-  const { purchaseGoal, setPurchaseGoal, isPurchaseExceedingLimit } = useFinance();
+  const { purchaseGoal, setPurchaseGoal, isPurchaseExceedingLimit, savingsGoal } = useFinance();
   const [editing, setEditing] = useState(null);
   const [tempValue, setTempValue] = useState("");
+  
+  const isInsufficientSavings = () => {
+    return purchaseGoal.paymentMethod === "PIX/Débito" && purchaseGoal.totalValue > savingsGoal.savedAmount;
+  };
 
   const handleEdit = (field, value) => {
     setEditing(field);
@@ -168,12 +172,23 @@ const PurchaseGoal = () => {
           </>
         )}
       </div>
-      
-      {isPurchaseExceedingLimit() && purchaseGoal.paymentMethod === "Crédito" && (
+        {isPurchaseExceedingLimit() && purchaseGoal.paymentMethod === "Crédito" && (
         <div className="purchase-goal-alert">
           <AlertCircle size={20} className="purchase-goal-icon-alert" />
           <span>
             A parcela mensal excede 10% da sua renda. Considere aumentar o número de parcelas ou buscar outra forma de pagamento.
+          </span>
+        </div>
+      )}
+      
+      {isInsufficientSavings() && (
+        <div className="purchase-goal-alert">
+          <AlertCircle size={20} className="purchase-goal-icon-alert" />
+          <span>
+            Valor insuficiente na poupança. Faltam R$ {(purchaseGoal.totalValue - savingsGoal.savedAmount).toLocaleString("pt-BR", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2
+            })} para realizar esta compra à vista.
           </span>
         </div>
       )}
