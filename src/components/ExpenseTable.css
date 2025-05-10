@@ -7,6 +7,8 @@
 .expense-table {
     width: 100%;
     border-collapse: collapse;
+    overflow-x: auto;
+    display: block;
 }
 
 .expense-table th,
@@ -14,10 +16,45 @@
     padding: 14px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    white-space: nowrap;
 }
 
 .expense-table th {
     background: #ffffff;
+}
+
+/* Styles for mobile devices */
+@media screen and (max-width: 768px) {
+    .expense-table {
+        font-size: 14px;
+    }
+
+    .expense-table th,
+    .expense-table td {
+        padding: 10px 8px;
+    }
+
+    .expense-table-input {
+        width: 60px;
+    }
+}
+
+/* Styles for very small devices */
+@media screen and (max-width: 480px) {
+    .expense-table {
+        font-size: 12px;
+    }
+
+    .expense-table th,
+    .expense-table td {
+        padding: 8px 4px;
+    }
+
+    .expense-table-dot {
+        width: 8px;
+        height: 8px;
+        margin-right: 4px;
+    }
 }
 
 .expense-table-dot {
@@ -44,4 +81,48 @@
 
 .expense-table-balance-amount {
     color: #22C55E;
+}
+
+.expense-table-number {
+    text-align: right;
+}
+
+.expense-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 15px;
+    background: 
+        linear-gradient(to right, white 30%, rgba(255, 255, 255, 0)),
+        linear-gradient(to right, rgba(255, 255, 255, 0), white 70%) 0 100%,
+        radial-gradient(farthest-side at 0% 50%, rgba(0,0,0,.2), rgba(0,0,0,0)),
+        radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
+    background-repeat: no-repeat;
+    background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+    background-position: 0 0, 100% 0, 0 0, 100% 0;
+    background-attachment: local, local, scroll, scroll;
+}
+
+/* Estilos para inputs em modo de edição */
+.expense-table-input {
+    width: 80px;
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Highlight para células editáveis */
+.expense-table-editable {
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.expense-table-editable:hover {
+    background-color: #f0f0f0;
+}
+
+.expense-table-negative {
+    color: #EF4444;
 }
