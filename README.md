@@ -32,8 +32,10 @@ personal-finance/
 │   │   └── PersonalFinanceApp.jsx
 │   ├── index.css          # Global styles
 │   └── main.jsx           # React entry point
-├── [package.json](http://_vscodecontentref_/1)           # Project dependencies and scripts
-´´´
+├── [package.json](http://_vscodecontentref_/1)
+#Project dependencies and scripts
+
+```
 
 ## 🛠️ Features
 
